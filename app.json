@@ -1,0 +1,36 @@
+{
+  "name": "Video Provider Bot",
+  "description": "Telegram bot to collect and deliver videos via unique links. Built with python-telegram-bot and MongoDB.",
+  "repository": "https://github.com/your-username/your-repo-name",
+  "logo": "https://telegram.org/img/t_logo.png",
+  "keywords": ["telegram", "bot", "python", "videos", "heroku"],
+  "env": {
+    "BOT_TOKEN": {
+      "description": "Telegram Bot Token from @BotFather",
+      "required": true
+    },
+    "MONGO_URI": {
+      "description": "MongoDB URI (from MongoDB Atlas or local instance)",
+      "required": true
+    },
+    "BOT_USERNAME": {
+      "description": "Your bot username (without @), e.g., MyVideoBot",
+      "required": true
+    }
+  },
+  "buildpacks": [
+    {
+      "url": "heroku/python"
+    }
+  ],
+  "formation": {
+    "worker": {
+      "quantity": 1,
+      "size": "eco"
+    }
+  },
+  "addons": [],
+  "scripts": {
+    "postdeploy": "echo '✅ Deployed! Set your bot token, username, and Mongo URI in config vars.'"
+  }
+}
